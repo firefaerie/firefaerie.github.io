@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,53 +9,45 @@
   <meta name="description" content="Personal portfolio of Prathivee: economics, research, articles, papers, photography, projects, resume, and contact." />
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg: #f6f1e8;
-      --surface: #fffaf1;
-      --text: #111111;
-      --muted: #4a433b;
-      --line: rgba(0,0,0,0.13);
-      --dark: #111111;
-      --accent-blue: #5b79c9;
-      --accent-beige: #cbbfa8;
-      --accent-green: #a7ba78;
-      --accent-red: #e94f52;
-      --accent-lavender: #7f99d8;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: #f6f1e8;
+      color: #111;
       line-height: 1.6;
     }
 
-    a { color: inherit; }
+    a {
+      color: inherit;
+    }
 
     .topbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 80;
+      z-index: 50;
       padding: 16px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(246, 241, 232, 0.88);
+      background: rgba(246, 241, 232, 0.86);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
 
     .logo {
-      font-weight: 900;
-      letter-spacing: -0.7px;
-      text-decoration: none;
-      cursor: pointer;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
 
     .topbar nav {
@@ -68,10 +61,11 @@
 
     .topbar nav a {
       text-decoration: none;
-      cursor: pointer;
     }
 
-    .topbar nav a:hover { text-decoration: underline; }
+    .topbar nav a:hover {
+      text-decoration: underline;
+    }
 
     .hero {
       min-height: 100vh;
@@ -106,33 +100,32 @@
     .quick-links {
       margin-top: 58px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 14px;
-      max-width: 1120px;
+      max-width: 1080px;
     }
 
     .quick-card {
-      min-height: 165px;
+      min-height: 145px;
       padding: 22px;
-      background: var(--surface);
-      border: 1px solid var(--line);
+      background: #fffaf1;
+      border: 1px solid rgba(0,0,0,0.13);
       text-decoration: none;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: 0.25s ease;
-      cursor: pointer;
     }
 
     .quick-card:hover {
-      background: var(--dark);
+      background: #111;
       color: #fff;
       transform: translateY(-6px);
     }
 
     .quick-card strong {
-      font-size: 25px;
-      letter-spacing: -0.8px;
+      font-size: 22px;
+      letter-spacing: -0.5px;
     }
 
     .quick-card span {
@@ -140,196 +133,119 @@
       color: #777;
     }
 
-    .quick-card:hover span { color: #bbb; }
-
-    .home-note {
-      margin-top: 42px;
-      max-width: 760px;
-      color: #5b544c;
-      font-size: 15px;
+    .quick-card:hover span {
+      color: #bbb;
     }
 
-    .detail-layout {
-      display: none;
-      min-height: 100vh;
-      padding-top: 65px;
+    section {
+      padding: 92px 7%;
+      border-top: 1px solid rgba(0,0,0,0.12);
     }
 
-    .detail-layout.active {
+    .section-heading {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 0.45fr 1fr;
+      gap: 42px;
+      align-items: start;
+      margin-bottom: 38px;
     }
 
-    .sidebar {
-      width: 320px;
-      max-width: 82vw;
-      height: calc(100vh - 65px);
-      position: sticky;
-      top: 65px;
-      background: #111;
-      color: white;
-      overflow-y: auto;
-      transition: 0.25s ease;
-      border-right: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .sidebar.collapsed { width: 64px; }
-
-    .sidebar-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.13);
-    }
-
-    .sidebar-title {
-      font-weight: 800;
-      font-size: 18px;
-      white-space: nowrap;
-    }
-
-    .sidebar.collapsed .sidebar-title,
-    .sidebar.collapsed .sidebar-list,
-    .sidebar.collapsed .sidebar-home,
-    .sidebar.collapsed .sidebar-category {
-      display: none;
-    }
-
-    .toggle-btn {
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255,255,255,0.24);
-      background: transparent;
-      color: #fff;
-      cursor: pointer;
-      font-size: 18px;
-      flex: 0 0 auto;
-    }
-
-    .sidebar-home {
-      display: block;
-      padding: 14px 18px;
-      color: #ddd;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      cursor: pointer;
-    }
-
-    .sidebar-home:hover { background: rgba(255,255,255,0.08); }
-
-    .sidebar-category {
-      padding: 16px 18px 8px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #888;
-    }
-
-    .sidebar-list a {
-      display: block;
-      padding: 14px 18px;
-      color: #d7d7d7;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .sidebar-list a:hover,
-    .sidebar-list a.active {
-      background: rgba(255,255,255,0.12);
-      color: white;
-    }
-
-    .detail-main {
-      padding: 70px 8%;
-      max-width: 1100px;
-      width: 100%;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-bottom: 28px;
-      color: #555;
-      text-decoration: none;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .detail-main h1 {
-      font-size: clamp(44px, 8vw, 96px);
+    .section-heading h2 {
+      font-size: clamp(38px, 6vw, 82px);
+      line-height: 0.95;
       letter-spacing: -4px;
-      margin-bottom: 22px;
     }
 
-    .detail-meta {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #777;
-      font-size: 13px;
-      margin-bottom: 28px;
+    .section-heading p {
+      font-size: 18px;
+      color: #3f3932;
+      max-width: 760px;
     }
 
-    .detail-main p {
-      font-size: 20px;
-      color: #332e29;
-      margin-bottom: 18px;
-      max-width: 860px;
-    }
-
-    .detail-grid {
-      margin-top: 36px;
+    .article-wall {
+      min-height: 500px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 45px;
     }
 
-    .detail-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
+    .article-tab {
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
       padding: 24px;
-      min-height: 150px;
-      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
       transition: 0.25s ease;
     }
 
-    .detail-card:hover {
-      background: #111;
-      color: #fff;
-      transform: translateY(-5px);
+    .article-tab:nth-child(1) { background: #5b79c9; }
+    .article-tab:nth-child(2) { background: #cbbfa8; }
+    .article-tab:nth-child(3) { background: #a7ba78; }
+    .article-tab:nth-child(4) { background: #e94f52; }
+    .article-tab:nth-child(5) { background: #7f99d8; }
+
+    .article-tab:hover {
+      transform: scale(1.025);
+      z-index: 2;
+      filter: saturate(1.08);
     }
 
-    .detail-card h3 {
-      font-size: 23px;
-      letter-spacing: -0.7px;
-      line-height: 1.05;
-      margin-bottom: 10px;
+    .article-tab h3 {
+      font-size: clamp(22px, 3vw, 42px);
+      line-height: 0.95;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      max-height: 420px;
+      text-shadow: 0 1px 18px rgba(0,0,0,0.18);
     }
 
-    .detail-card p {
-      font-size: 15px;
-      color: #555;
-      margin: 0;
+    .article-tab .big-no {
+      position: absolute;
+      right: 10px;
+      bottom: -4px;
+      font-size: clamp(72px, 8vw, 150px);
+      line-height: 1;
+      font-weight: 900;
+      opacity: 0.23;
     }
 
-    .detail-card:hover p { color: #d6d6d6; }
-
-    .image-large {
-      width: 100%;
-      height: 540px;
-      background:
-        linear-gradient(135deg, rgba(0,0,0,0.08), rgba(255,255,255,0.14)),
-        linear-gradient(45deg, #d5c7b0, #778ec7);
-      margin: 18px 0 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.75);
-      font-size: 24px;
-      letter-spacing: 3px;
+    .article-tab .read {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 13px;
+      letter-spacing: 2px;
       text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: #fffaf1;
+      border: 1px solid rgba(0,0,0,0.12);
+      padding: 26px;
+      min-height: 180px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #464038;
+      font-size: 16px;
     }
 
     .button-row {
@@ -355,9 +271,19 @@
       color: #111;
     }
 
-    .button.secondary:hover {
+    footer {
+      padding: 45px 7%;
       background: #111;
-      color: #fff;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: white;
+      margin-left: 15px;
     }
 
     @media (max-width: 850px) {
@@ -368,52 +294,51 @@
         flex-direction: column;
       }
 
-      .hero { padding-top: 70px; }
-      h1 { letter-spacing: -3px; }
-
-      .detail-layout {
-        padding-top: 0;
+      .hero {
+        padding-top: 70px;
       }
 
-      .detail-layout.active { grid-template-columns: 1fr; }
-
-      .sidebar {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        max-height: 45vh;
-        position: relative;
-        top: 0;
+      h1 {
+        letter-spacing: -3px;
       }
 
-      .sidebar.collapsed {
-        width: 100%;
-        height: 64px;
-        overflow: hidden;
+      .section-heading {
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
 
-      .detail-main { padding: 44px 7%; }
-      .image-large { height: 360px; }
+      .article-wall {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .article-tab {
+        min-height: 170px;
+      }
+
+      .article-tab h3 {
+        writing-mode: horizontal-tb;
+        transform: none;
+        max-height: none;
+      }
     }
   </style>
 </head>
 
 <body>
   <header class="topbar">
-    <a class="logo" onclick="showHome()" href="#home">Prathivee</a>
+    <div class="logo">Prathivee</div>
     <nav>
-      <a onclick="openCategory('about')" href="#page/about">About</a>
-      <a onclick="openCategory('news')" href="#page/news">News</a>
-      <a onclick="openCategory('articles')" href="#page/articles">Articles</a>
-      <a onclick="openCategory('papers')" href="#page/papers">Papers</a>
-      <a onclick="openCategory('photography')" href="#page/photography">Photography</a>
-      <a onclick="openCategory('resume')" href="#page/resume">Resume</a>
-      <a onclick="openCategory('thoughts')" href="#page/thoughts">Thoughts</a>
-      <a onclick="openCategory('contact')" href="#page/contact">Contact</a>
+      <a href="#articles">Articles</a>
+      <a href="#papers">Papers</a>
+      <a href="#resume">Resume</a>
+      <a href="#photography">Photography</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main id="homeView">
+  <main>
     <section class="hero" id="home">
       <div class="label">Personal Portfolio</div>
       <h1>Welcome,<br>I’m Prathivee.</h1>
@@ -422,351 +347,182 @@
       </p>
 
       <div class="quick-links">
-        <a class="quick-card" href="#page/about" onclick="openCategory('about')">
-          <strong>About Me</strong>
-          <span>Bio, background, interests</span>
-        </a>
-        <a class="quick-card" href="#page/news" onclick="openCategory('news')">
+        <a class="quick-card" href="#news">
           <strong>News</strong>
           <span>Updates & announcements</span>
         </a>
-        <a class="quick-card" href="#page/articles" onclick="openCategory('articles')">
+        <a class="quick-card" href="#articles">
           <strong>Articles</strong>
           <span>Essays & analysis</span>
         </a>
-        <a class="quick-card" href="#page/papers" onclick="openCategory('papers')">
-          <strong>Papers</strong>
-          <span>Research work</span>
-        </a>
-        <a class="quick-card" href="#page/photography" onclick="openCategory('photography')">
+        <a class="quick-card" href="#photography">
           <strong>Photography</strong>
           <span>Selected work</span>
         </a>
-        <a class="quick-card" href="#page/resume" onclick="openCategory('resume')">
+        <a class="quick-card" href="#resume">
           <strong>Resume</strong>
           <span>CV & experience</span>
         </a>
-        <a class="quick-card" href="#page/thoughts" onclick="openCategory('thoughts')">
-          <strong>Thoughts</strong>
-          <span>Notes & reflections</span>
+        <a class="quick-card" href="#about">
+          <strong>About Me</strong>
+          <span>Bio & interests</span>
         </a>
-        <a class="quick-card" href="#page/contact" onclick="openCategory('contact')">
+        <a class="quick-card" href="#papers">
+          <strong>Papers</strong>
+          <span>Research work</span>
+        </a>
+        <a class="quick-card" href="#contact">
           <strong>Contact</strong>
           <span>LinkedIn, email, Instagram</span>
         </a>
+        <a class="quick-card" href="#thoughts">
+          <strong>Thoughts</strong>
+          <span>Notes & reflections</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="articles">
+      <div class="section-heading">
+        <h2>Articles</h2>
+        <p>
+          Long-form writing and essays. The layout below follows your reference idea:
+          long visual tabs where article titles become the main design element.
+          Later, each tab can open a separate article page.
+        </p>
       </div>
 
-      <p class="home-note">
-        All sections now open as separate internal pages. Each page has a collapsible sidebar so visitors can toggle through the items inside that section.
-      </p>
+      <div class="article-wall">
+        <a class="article-tab" href="#">
+          <span class="read">Read</span>
+          <h3>India–China Relations</h3>
+          <span class="big-no">01</span>
+        </a>
+        <a class="article-tab" href="#">
+          <span class="read">Read</span>
+          <h3>Geoeconomics Notes</h3>
+          <span class="big-no">02</span>
+        </a>
+        <a class="article-tab" href="#">
+          <span class="read">Read</span>
+          <h3>Security & Sovereignty</h3>
+          <span class="big-no">03</span>
+        </a>
+        <a class="article-tab" href="#">
+          <span class="read">Read</span>
+          <h3>Climate & Development</h3>
+          <span class="big-no">04</span>
+        </a>
+        <a class="article-tab" href="#">
+          <span class="read">Read</span>
+          <h3>Random Essays</h3>
+          <span class="big-no">05</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="section-heading">
+        <h2>News</h2>
+        <p>Use this section for updates: new papers, article releases, project milestones, internships, achievements, talks, or announcements.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Latest Update</h3>
+          <p>Add your most recent academic, professional, or creative update here.</p>
+        </div>
+        <div class="card">
+          <h3>Upcoming</h3>
+          <p>Add future plans, upcoming papers, events, or ongoing projects here.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="papers">
+      <div class="section-heading">
+        <h2>Papers</h2>
+        <p>Research papers, working papers, dissertation work, policy notes, and academic writing can be listed here with abstracts and download links.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Research Paper</h3>
+          <p>Title, co-author details, abstract, status, journal target, and PDF link can go here.</p>
+        </div>
+        <div class="card">
+          <h3>Dissertation / Thesis</h3>
+          <p>Add topic, research question, data, method, findings, and policy relevance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="section-heading">
+        <h2>Resume</h2>
+        <p>Place your CV PDF in the same repository later and link it here. This section can also summarize education, internships, leadership, and skills.</p>
+      </div>
+      <div class="button-row">
+        <a class="button" href="#">Download CV</a>
+        <a class="button secondary" href="#contact">Contact Me</a>
+      </div>
+    </section>
+
+    <section id="photography">
+      <div class="section-heading">
+        <h2>Photography</h2>
+        <p>A curated visual portfolio: event coverage, travel, portraits, institute work, and selected photo stories with descriptions.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Event Photography</h3>
+          <p>Add your best institute or seminar photographs here.</p>
+        </div>
+        <div class="card">
+          <h3>Travel</h3>
+          <p>Add location-wise photo collections with short descriptions.</p>
+        </div>
+        <div class="card">
+          <h3>Portraits</h3>
+          <p>Add selected portraits or creative work.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-heading">
+        <h2>About Me</h2>
+        <p>
+          Write your professional bio here: education, interests, research direction,
+          tools you use, and the kind of opportunities or collaborations you are open to.
+        </p>
+      </div>
+    </section>
+
+    <section id="thoughts">
+      <div class="section-heading">
+        <h2>Thoughts</h2>
+        <p>Short reflections, informal notes, reading observations, study notes, and ideas that do not fit into full articles.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-heading">
+        <h2>Contact</h2>
+        <p>
+          Email: your-email@example.com<br>
+          LinkedIn: add your LinkedIn link<br>
+          Instagram: add your Instagram link
+        </p>
+      </div>
     </section>
   </main>
 
-  <main id="detailView" class="detail-layout">
-    <aside id="sidebar" class="sidebar">
-      <div class="sidebar-head">
-        <span class="sidebar-title" id="sidebarTitle">Section</span>
-        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-      </div>
-      <a class="sidebar-home" href="#home" onclick="showHome()">← Back to main page</a>
-      <div class="sidebar-category">Items in this section</div>
-      <div class="sidebar-list" id="sidebarList"></div>
-    </aside>
-
-    <article class="detail-main" id="detailContent"></article>
-  </main>
-
-  <script>
-    const data = {
-      about: [
-        {
-          id: "bio",
-          title: "About Me",
-          meta: "Bio",
-          desc: "Write your main professional biography here: education, interests, research direction, skills, and the type of opportunities you are looking for."
-        },
-        {
-          id: "academic-background",
-          title: "Academic Background",
-          meta: "About · Education",
-          desc: "Add your degree, institute, specialization, coursework, research training, and academic interests here."
-        },
-        {
-          id: "interests",
-          title: "Interests",
-          meta: "About · Interests",
-          desc: "Add your interests in economics, geopolitics, geoeconomics, data analysis, research, writing, and photography."
-        }
-      ],
-
-      news: [
-        {
-          id: "latest-update",
-          title: "Latest Update",
-          meta: "News · 2026",
-          desc: "Add your most recent academic, professional, or creative update here. This will become the full page for that update."
-        },
-        {
-          id: "upcoming-work",
-          title: "Upcoming Work",
-          meta: "News · 2026",
-          desc: "Add future plans, upcoming papers, events, or ongoing projects here."
-        },
-        {
-          id: "project-release",
-          title: "Project Release",
-          meta: "News · 2026",
-          desc: "Use this for a new dashboard, data tool, article, paper release, or professional announcement."
-        }
-      ],
-
-      articles: [
-        {
-          id: "india-china-relations",
-          title: "India–China Relations",
-          meta: "Article · Long-form essay",
-          desc: "This page will contain the full article. Add introduction, headings, arguments, evidence, and conclusion here."
-        },
-        {
-          id: "geoeconomics-notes",
-          title: "Geoeconomics Notes",
-          meta: "Article · Notes",
-          desc: "A full page for geoeconomics-related writing and analysis."
-        },
-        {
-          id: "security-sovereignty",
-          title: "Security & Sovereignty",
-          meta: "Article · International security",
-          desc: "A full page for writing on security, sovereignty, R2P, conflict, and law."
-        },
-        {
-          id: "climate-development",
-          title: "Climate & Development",
-          meta: "Article · Economics and environment",
-          desc: "A full page for climate, development, energy, and policy writing."
-        },
-        {
-          id: "random-essays",
-          title: "Random Essays",
-          meta: "Article · Miscellaneous",
-          desc: "Use this as a collection or individual essay page."
-        }
-      ],
-
-      papers: [
-        {
-          id: "research-paper-1",
-          title: "Research Paper Title",
-          meta: "Working Paper",
-          desc: "Full paper page. Add abstract, research question, literature, method, findings, status, and PDF download link."
-        },
-        {
-          id: "dissertation-thesis",
-          title: "Dissertation / Thesis",
-          meta: "Thesis",
-          desc: "Full thesis page. Add topic, supervisor, method, data, findings, and policy relevance."
-        },
-        {
-          id: "policy-note",
-          title: "Policy Note",
-          meta: "Policy Writing",
-          desc: "Full page for a policy note or issue brief."
-        }
-      ],
-
-      photography: [
-        {
-          id: "event-photography",
-          title: "Event Photography",
-          meta: "Photography · 2026",
-          desc: "Large photo display first, then description below. Replace the placeholder with your actual image later.",
-          image: true
-        },
-        {
-          id: "travel-photography",
-          title: "Travel Photography",
-          meta: "Photography · 2026",
-          desc: "Large photo display first, then description below. Add location, date, camera notes, and context.",
-          image: true
-        },
-        {
-          id: "portraits",
-          title: "Portraits",
-          meta: "Photography · 2026",
-          desc: "Large photo display first, then description below. Add story, subject context, and visual notes.",
-          image: true
-        }
-      ],
-
-      resume: [
-        {
-          id: "cv",
-          title: "CV",
-          meta: "Resume · Download",
-          desc: "Upload your CV PDF to the repository later and link it here. For example, if the file is named CV.pdf, the download link will be CV.pdf.",
-          button: true
-        },
-        {
-          id: "experience",
-          title: "Experience",
-          meta: "Resume · Experience",
-          desc: "Add internships, research roles, volunteering, communications work, leadership roles, and responsibilities here."
-        },
-        {
-          id: "skills",
-          title: "Skills",
-          meta: "Resume · Skills",
-          desc: "Add software, research tools, data skills, economics skills, writing, photography, and communication skills here."
-        }
-      ],
-
-      thoughts: [
-        {
-          id: "reading-note",
-          title: "Reading Note",
-          meta: "Thought",
-          desc: "A full page for a short reading note or observation."
-        },
-        {
-          id: "reflection",
-          title: "Reflection",
-          meta: "Thought",
-          desc: "A full page for informal reflection or personal writing."
-        }
-      ],
-
-      contact: [
-        {
-          id: "links",
-          title: "Contact Links",
-          meta: "Contact",
-          desc: "Add your email, LinkedIn, Instagram, GitHub, and other public links here."
-        },
-        {
-          id: "collaboration",
-          title: "Collaboration",
-          meta: "Contact · Outreach",
-          desc: "Write what kinds of collaboration, research, writing, internship, or project opportunities you are open to."
-        }
-      ]
-    };
-
-    const sectionIntro = {
-      about: "This section introduces who you are. Use the sidebar to move between your bio, academic background, and interests.",
-      news: "This section contains updates and announcements. Use the sidebar to browse each update.",
-      articles: "This section contains long-form articles. Use the sidebar to move between different article pages.",
-      papers: "This section contains research papers, working papers, and academic writing. Use the sidebar to open each paper page.",
-      photography: "This section contains photo stories. Each item can show a large image first, followed by the description.",
-      resume: "This section contains your CV, experience, and skills. Use the sidebar to move between resume items.",
-      thoughts: "This section contains notes and reflections. Use the sidebar to browse them.",
-      contact: "This section contains contact links and collaboration information."
-    };
-
-    function titleCase(category) {
-      if (category === "about") return "About Me";
-      return category.charAt(0).toUpperCase() + category.slice(1);
-    }
-
-    function findItem(category, id) {
-      return (data[category] || []).find(item => item.id === id) || (data[category] || [])[0];
-    }
-
-    function openCategory(category) {
-      const firstItem = (data[category] || [])[0];
-      if (!firstItem) return;
-      openDetail(category, firstItem.id, true);
-    }
-
-    function openDetail(category, id, pushHash = false) {
-      const item = findItem(category, id);
-      if (!item) return;
-
-      document.getElementById("homeView").style.display = "none";
-      document.getElementById("detailView").classList.add("active");
-
-      document.getElementById("sidebarTitle").textContent = titleCase(category);
-
-      const sidebarList = document.getElementById("sidebarList");
-      sidebarList.innerHTML = "";
-
-      data[category].forEach(entry => {
-        const link = document.createElement("a");
-        link.href = "#page/" + category + "/" + entry.id;
-        link.textContent = entry.title;
-        link.className = entry.id === id ? "active" : "";
-        link.onclick = function(event) {
-          event.preventDefault();
-          openDetail(category, entry.id, true);
-        };
-        sidebarList.appendChild(link);
-      });
-
-      const content = document.getElementById("detailContent");
-      const imageBlock = item.image ? '<div class="image-large">Large Image</div>' : "";
-      const buttonBlock = item.button ? '<div class="button-row"><a class="button" href="CV.pdf">Download CV</a><a class="button secondary" onclick="openDetail(\\'resume\\',\\'experience\\',true)">View Experience</a></div>' : "";
-
-      const itemCards = data[category].map(entry => `
-        <div class="detail-card" onclick="openDetail('${category}', '${entry.id}', true)">
-          <h3>${entry.title}</h3>
-          <p>${entry.meta}</p>
-        </div>
-      `).join("");
-
-      content.innerHTML = `
-        <a class="back-link" href="#home" onclick="showHome()">← Back to main page</a>
-        <div class="detail-meta">${item.meta}</div>
-        <h1>${item.title}</h1>
-        ${imageBlock}
-        <p>${item.desc}</p>
-        <p>${sectionIntro[category]}</p>
-        ${buttonBlock}
-        <div class="detail-grid">${itemCards}</div>
-      `;
-
-      if (pushHash) {
-        history.pushState(null, "", "#page/" + category + "/" + item.id);
-      }
-
-      window.scrollTo(0, 0);
-    }
-
-    function showHome() {
-      document.getElementById("detailView").classList.remove("active");
-      document.getElementById("homeView").style.display = "block";
-      history.pushState(null, "", "#home");
-      window.scrollTo(0, 0);
-    }
-
-    function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("collapsed");
-    }
-
-    window.addEventListener("load", () => {
-      const hash = window.location.hash;
-      if (hash.startsWith("#page/")) {
-        const parts = hash.replace("#page/", "").split("/");
-        if (parts.length === 1 || !parts[1]) {
-          openCategory(parts[0]);
-        } else {
-          openDetail(parts[0], parts[1], false);
-        }
-      }
-    });
-
-    window.addEventListener("popstate", () => {
-      const hash = window.location.hash;
-      if (hash.startsWith("#page/")) {
-        const parts = hash.replace("#page/", "").split("/");
-        if (parts.length === 1 || !parts[1]) {
-          openCategory(parts[0]);
-        } else {
-          openDetail(parts[0], parts[1], false);
-        }
-      } else {
-        document.getElementById("detailView").classList.remove("active");
-        document.getElementById("homeView").style.display = "block";
-      }
-    });
-  </script>
+  <footer>
+    <p>© 2026 Prathivee. Personal portfolio website.</p>
+    <p>
+      <a href="#home">Top</a>
+      <a href="#articles">Articles</a>
+      <a href="#contact">Contact</a>
+    </p>
+  </footer>
 </body>
 </html>
