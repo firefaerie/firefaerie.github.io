@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +54,7 @@
       font-weight: 900;
       letter-spacing: -0.7px;
       text-decoration: none;
+      cursor: pointer;
     }
 
     .topbar nav {
@@ -66,7 +66,11 @@
       justify-content: flex-end;
     }
 
-    .topbar nav a { text-decoration: none; }
+    .topbar nav a {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
     .topbar nav a:hover { text-decoration: underline; }
 
     .hero {
@@ -102,13 +106,13 @@
     .quick-links {
       margin-top: 58px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 14px;
-      max-width: 1080px;
+      max-width: 1120px;
     }
 
     .quick-card {
-      min-height: 145px;
+      min-height: 165px;
       padding: 22px;
       background: var(--surface);
       border: 1px solid var(--line);
@@ -117,6 +121,7 @@
       flex-direction: column;
       justify-content: space-between;
       transition: 0.25s ease;
+      cursor: pointer;
     }
 
     .quick-card:hover {
@@ -126,8 +131,8 @@
     }
 
     .quick-card strong {
-      font-size: 22px;
-      letter-spacing: -0.5px;
+      font-size: 25px;
+      letter-spacing: -0.8px;
     }
 
     .quick-card span {
@@ -137,293 +142,11 @@
 
     .quick-card:hover span { color: #bbb; }
 
-    section {
-      padding: 92px 7%;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-heading {
-      display: grid;
-      grid-template-columns: 0.38fr 1fr;
-      gap: 42px;
-      align-items: start;
-      margin-bottom: 38px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(38px, 6vw, 82px);
-      line-height: 0.95;
-      letter-spacing: -4px;
-    }
-
-    .section-heading p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 800px;
-    }
-
-    .scroll-row {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      padding: 8px 0 24px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: thin;
-    }
-
-    .scroll-row > * {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-    }
-
-    .article-card {
-      position: relative;
-      width: clamp(190px, 21vw, 285px);
-      min-height: 500px;
-      padding: 24px;
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      transition: 0.25s ease;
-    }
-
-    .article-card:nth-child(5n+1) { background: var(--accent-blue); }
-    .article-card:nth-child(5n+2) { background: var(--accent-beige); }
-    .article-card:nth-child(5n+3) { background: var(--accent-green); }
-    .article-card:nth-child(5n+4) { background: var(--accent-red); }
-    .article-card:nth-child(5n+5) { background: var(--accent-lavender); }
-
-    .article-card:hover {
-      transform: translateY(-8px);
-      filter: saturate(1.08);
-    }
-
-    .article-card h3 {
-      font-size: clamp(24px, 3vw, 42px);
-      line-height: 0.95;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      max-height: 420px;
-      text-shadow: 0 1px 18px rgba(0,0,0,0.18);
-    }
-
-    .article-card .tag {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .article-card .big-no {
-      position: absolute;
-      right: 10px;
-      bottom: -4px;
-      font-size: clamp(72px, 8vw, 150px);
-      line-height: 1;
-      font-weight: 900;
-      opacity: 0.23;
-    }
-
-    .news-card {
-      width: clamp(260px, 32vw, 430px);
-      min-height: 220px;
-      padding: 26px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: 0.25s ease;
-    }
-
-    .news-card:hover {
-      background: #111;
-      color: #fff;
-      transform: translateY(-6px);
-    }
-
-    .news-card h3 {
-      font-size: 28px;
-      letter-spacing: -1px;
-      line-height: 1.05;
-    }
-
-    .news-card p {
-      margin-top: 12px;
-      color: #514a42;
-    }
-
-    .news-card:hover p { color: #d7d0c8; }
-
-    .date {
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #777;
-    }
-
-    .news-card:hover .date { color: #bbb; }
-
-    .paper-scroll {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      padding: 8px 0 26px;
-      scroll-snap-type: x mandatory;
-    }
-
-    .paper-card {
-      width: clamp(260px, 30vw, 420px);
-      height: 340px;
-      border-radius: 170px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      padding: 34px;
-      text-decoration: none;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      overflow: hidden;
-      transition: 0.35s ease;
-      scroll-snap-align: start;
-    }
-
-    .paper-card:hover {
-      border-radius: 28px;
-      background: #111;
-      color: #fff;
-      transform: translateY(-6px);
-    }
-
-    .paper-card h3 {
-      font-size: 30px;
-      line-height: 1.02;
-      letter-spacing: -1.4px;
-      margin-bottom: 12px;
-    }
-
-    .paper-card .paper-desc {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      color: #d8d1c8;
-      transition: 0.35s ease;
-    }
-
-    .paper-card:hover .paper-desc {
-      max-height: 170px;
-      opacity: 1;
-      margin-top: 12px;
-    }
-
-    .photo-card {
-      width: clamp(280px, 34vw, 510px);
-      height: 330px;
-      background: #ddd;
-      border: 1px solid var(--line);
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-      display: block;
-      transition: 0.25s ease;
-    }
-
-    .photo-card:hover { transform: translateY(-7px); }
-
-    .photo-placeholder {
-      width: 100%;
-      height: 100%;
-      background:
-        linear-gradient(135deg, rgba(0,0,0,0.08), rgba(255,255,255,0.14)),
-        linear-gradient(45deg, #d5c7b0, #778ec7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.72);
-      font-size: 18px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .photo-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.02));
-      color: #fff;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      opacity: 0;
-      transition: 0.25s ease;
-    }
-
-    .photo-card:hover .photo-overlay { opacity: 1; }
-
-    .photo-overlay h3 {
-      font-size: 30px;
-      line-height: 1.02;
-      letter-spacing: -1px;
-    }
-
-    .photo-overlay p {
-      margin-top: 8px;
-      color: #ddd;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    .info-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      padding: 26px;
-      min-height: 180px;
-    }
-
-    .info-card h3 {
-      font-size: 24px;
-      letter-spacing: -0.8px;
-      margin-bottom: 12px;
-    }
-
-    .info-card p {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .button-row {
-      margin-top: 24px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-block;
-      text-decoration: none;
-      padding: 13px 18px;
-      border: 1px solid #111;
-      background: #111;
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .button.secondary {
-      background: transparent;
-      color: #111;
+    .home-note {
+      margin-top: 42px;
+      max-width: 760px;
+      color: #5b544c;
+      font-size: 15px;
     }
 
     .detail-layout {
@@ -432,10 +155,13 @@
       padding-top: 65px;
     }
 
-    .detail-layout.active { display: grid; grid-template-columns: auto 1fr; }
+    .detail-layout.active {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
 
     .sidebar {
-      width: 310px;
+      width: 320px;
       max-width: 82vw;
       height: calc(100vh - 65px);
       position: sticky;
@@ -466,7 +192,8 @@
 
     .sidebar.collapsed .sidebar-title,
     .sidebar.collapsed .sidebar-list,
-    .sidebar.collapsed .sidebar-home {
+    .sidebar.collapsed .sidebar-home,
+    .sidebar.collapsed .sidebar-category {
       display: none;
     }
 
@@ -478,6 +205,7 @@
       color: #fff;
       cursor: pointer;
       font-size: 18px;
+      flex: 0 0 auto;
     }
 
     .sidebar-home {
@@ -486,9 +214,18 @@
       color: #ddd;
       text-decoration: none;
       border-bottom: 1px solid rgba(255,255,255,0.10);
+      cursor: pointer;
     }
 
     .sidebar-home:hover { background: rgba(255,255,255,0.08); }
+
+    .sidebar-category {
+      padding: 16px 18px 8px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+    }
 
     .sidebar-list a {
       display: block;
@@ -497,6 +234,7 @@
       text-decoration: none;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       font-size: 14px;
+      cursor: pointer;
     }
 
     .sidebar-list a:hover,
@@ -507,7 +245,8 @@
 
     .detail-main {
       padding: 70px 8%;
-      max-width: 980px;
+      max-width: 1100px;
+      width: 100%;
     }
 
     .back-link {
@@ -516,6 +255,7 @@
       color: #555;
       text-decoration: none;
       font-size: 14px;
+      cursor: pointer;
     }
 
     .detail-main h1 {
@@ -536,12 +276,49 @@
       font-size: 20px;
       color: #332e29;
       margin-bottom: 18px;
-      max-width: 820px;
+      max-width: 860px;
     }
+
+    .detail-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .detail-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 24px;
+      min-height: 150px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .detail-card:hover {
+      background: #111;
+      color: #fff;
+      transform: translateY(-5px);
+    }
+
+    .detail-card h3 {
+      font-size: 23px;
+      letter-spacing: -0.7px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .detail-card p {
+      font-size: 15px;
+      color: #555;
+      margin: 0;
+    }
+
+    .detail-card:hover p { color: #d6d6d6; }
 
     .image-large {
       width: 100%;
-      height: 520px;
+      height: 540px;
       background:
         linear-gradient(135deg, rgba(0,0,0,0.08), rgba(255,255,255,0.14)),
         linear-gradient(45deg, #d5c7b0, #778ec7);
@@ -555,19 +332,32 @@
       text-transform: uppercase;
     }
 
-    footer {
-      padding: 45px 7%;
-      background: #111;
-      color: white;
+    .button-row {
+      margin-top: 24px;
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    footer a {
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 13px 18px;
+      border: 1px solid #111;
+      background: #111;
       color: white;
-      margin-left: 15px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: #111;
+    }
+
+    .button.secondary:hover {
+      background: #111;
+      color: #fff;
     }
 
     @media (max-width: 850px) {
@@ -581,14 +371,8 @@
       .hero { padding-top: 70px; }
       h1 { letter-spacing: -3px; }
 
-      .section-heading {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .article-card {
-        min-height: 420px;
-        width: 78vw;
+      .detail-layout {
+        padding-top: 0;
       }
 
       .detail-layout.active { grid-template-columns: 1fr; }
@@ -597,12 +381,16 @@
         width: 100%;
         max-width: 100%;
         height: auto;
-        max-height: 42vh;
+        max-height: 45vh;
         position: relative;
         top: 0;
       }
 
-      .sidebar.collapsed { width: 100%; height: 64px; overflow: hidden; }
+      .sidebar.collapsed {
+        width: 100%;
+        height: 64px;
+        overflow: hidden;
+      }
 
       .detail-main { padding: 44px 7%; }
       .image-large { height: 360px; }
@@ -612,16 +400,16 @@
 
 <body>
   <header class="topbar">
-    <a class="logo" href="#home" onclick="showHome()">Prathivee</a>
+    <a class="logo" onclick="showHome()" href="#home">Prathivee</a>
     <nav>
-      <a href="#about" onclick="showHome()">About</a>
-      <a href="#news" onclick="showHome()">News</a>
-      <a href="#articles" onclick="showHome()">Articles</a>
-      <a href="#papers" onclick="showHome()">Papers</a>
-      <a href="#photography" onclick="showHome()">Photography</a>
-      <a href="#resume" onclick="showHome()">Resume</a>
-      <a href="#thoughts" onclick="showHome()">Thoughts</a>
-      <a href="#contact" onclick="showHome()">Contact</a>
+      <a onclick="openCategory('about')" href="#page/about">About</a>
+      <a onclick="openCategory('news')" href="#page/news">News</a>
+      <a onclick="openCategory('articles')" href="#page/articles">Articles</a>
+      <a onclick="openCategory('papers')" href="#page/papers">Papers</a>
+      <a onclick="openCategory('photography')" href="#page/photography">Photography</a>
+      <a onclick="openCategory('resume')" href="#page/resume">Resume</a>
+      <a onclick="openCategory('thoughts')" href="#page/thoughts">Thoughts</a>
+      <a onclick="openCategory('contact')" href="#page/contact">Contact</a>
     </nav>
   </header>
 
@@ -634,254 +422,54 @@
       </p>
 
       <div class="quick-links">
-        <a class="quick-card" href="#about">
+        <a class="quick-card" href="#page/about" onclick="openCategory('about')">
           <strong>About Me</strong>
-          <span>Bio & interests</span>
+          <span>Bio, background, interests</span>
         </a>
-        <a class="quick-card" href="#news">
+        <a class="quick-card" href="#page/news" onclick="openCategory('news')">
           <strong>News</strong>
           <span>Updates & announcements</span>
         </a>
-        <a class="quick-card" href="#articles">
+        <a class="quick-card" href="#page/articles" onclick="openCategory('articles')">
           <strong>Articles</strong>
           <span>Essays & analysis</span>
         </a>
-        <a class="quick-card" href="#papers">
+        <a class="quick-card" href="#page/papers" onclick="openCategory('papers')">
           <strong>Papers</strong>
           <span>Research work</span>
         </a>
-        <a class="quick-card" href="#photography">
+        <a class="quick-card" href="#page/photography" onclick="openCategory('photography')">
           <strong>Photography</strong>
           <span>Selected work</span>
         </a>
-        <a class="quick-card" href="#resume">
+        <a class="quick-card" href="#page/resume" onclick="openCategory('resume')">
           <strong>Resume</strong>
           <span>CV & experience</span>
         </a>
-        <a class="quick-card" href="#thoughts">
+        <a class="quick-card" href="#page/thoughts" onclick="openCategory('thoughts')">
           <strong>Thoughts</strong>
           <span>Notes & reflections</span>
         </a>
-        <a class="quick-card" href="#contact">
+        <a class="quick-card" href="#page/contact" onclick="openCategory('contact')">
           <strong>Contact</strong>
           <span>LinkedIn, email, Instagram</span>
         </a>
       </div>
-    </section>
 
-    <section id="about">
-      <div class="section-heading">
-        <h2>About Me</h2>
-        <p>
-          Write your professional bio here: education, interests, research direction,
-          tools you use, and the kind of opportunities or collaborations you are open to.
-        </p>
-      </div>
-    </section>
-
-    <section id="news">
-      <div class="section-heading">
-        <h2>News</h2>
-        <p>Updates, milestones, announcements, internships, publications, and project releases. This row scrolls horizontally when you add more items.</p>
-      </div>
-
-      <div class="scroll-row">
-        <a class="news-card" href="#page/news/latest-update" onclick="openDetail('news','latest-update')">
-          <span class="date">2026</span>
-          <div>
-            <h3>Latest Update</h3>
-            <p>Add your most recent academic, professional, or creative update here.</p>
-          </div>
-        </a>
-
-        <a class="news-card" href="#page/news/upcoming-work" onclick="openDetail('news','upcoming-work')">
-          <span class="date">2026</span>
-          <div>
-            <h3>Upcoming Work</h3>
-            <p>Add future plans, upcoming papers, events, or ongoing projects here.</p>
-          </div>
-        </a>
-
-        <a class="news-card" href="#page/news/project-release" onclick="openDetail('news','project-release')">
-          <span class="date">2026</span>
-          <div>
-            <h3>Project Release</h3>
-            <p>Use this for a new dashboard, data tool, article, or paper release.</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="articles">
-      <div class="section-heading">
-        <h2>Articles</h2>
-        <p>
-          Long-form writing and essays. These title bars scroll horizontally, so you can add many more articles without breaking the frame.
-        </p>
-      </div>
-
-      <div class="scroll-row">
-        <a class="article-card" href="#page/articles/india-china-relations" onclick="openDetail('articles','india-china-relations')">
-          <span class="tag">Read</span>
-          <h3>India–China Relations</h3>
-          <span class="big-no">01</span>
-        </a>
-        <a class="article-card" href="#page/articles/geoeconomics-notes" onclick="openDetail('articles','geoeconomics-notes')">
-          <span class="tag">Read</span>
-          <h3>Geoeconomics Notes</h3>
-          <span class="big-no">02</span>
-        </a>
-        <a class="article-card" href="#page/articles/security-sovereignty" onclick="openDetail('articles','security-sovereignty')">
-          <span class="tag">Read</span>
-          <h3>Security & Sovereignty</h3>
-          <span class="big-no">03</span>
-        </a>
-        <a class="article-card" href="#page/articles/climate-development" onclick="openDetail('articles','climate-development')">
-          <span class="tag">Read</span>
-          <h3>Climate & Development</h3>
-          <span class="big-no">04</span>
-        </a>
-        <a class="article-card" href="#page/articles/random-essays" onclick="openDetail('articles','random-essays')">
-          <span class="tag">Read</span>
-          <h3>Random Essays</h3>
-          <span class="big-no">05</span>
-        </a>
-        <a class="article-card" href="#page/articles/new-article-placeholder" onclick="openDetail('articles','new-article-placeholder')">
-          <span class="tag">Read</span>
-          <h3>New Article Placeholder</h3>
-          <span class="big-no">06</span>
-        </a>
-      </div>
-    </section>
-
-    <section id="papers">
-      <div class="section-heading">
-        <h2>Papers</h2>
-        <p>
-          Scroll-shaped paper cards. Hover over a paper to open the shape and reveal a short description. Click to open the full paper page.
-        </p>
-      </div>
-
-      <div class="paper-scroll">
-        <a class="paper-card" href="#page/papers/research-paper-1" onclick="openDetail('papers','research-paper-1')">
-          <span class="date">Working Paper</span>
-          <h3>Research Paper Title</h3>
-          <p class="paper-desc">Short abstract preview appears on hover. Add method, data, and research question here.</p>
-        </a>
-
-        <a class="paper-card" href="#page/papers/dissertation-thesis" onclick="openDetail('papers','dissertation-thesis')">
-          <span class="date">Thesis</span>
-          <h3>Dissertation / Thesis</h3>
-          <p class="paper-desc">Add your thesis topic, empirical method, policy relevance, and downloadable PDF link.</p>
-        </a>
-
-        <a class="paper-card" href="#page/papers/policy-note" onclick="openDetail('papers','policy-note')">
-          <span class="date">Policy Note</span>
-          <h3>Policy Note</h3>
-          <p class="paper-desc">Use this for short research-based policy writing or issue briefs.</p>
-        </a>
-      </div>
-    </section>
-
-    <section id="photography">
-      <div class="section-heading">
-        <h2>Photography</h2>
-        <p>
-          Horizontal photo cards. Hover shows title and date. Click opens a bigger photo page where the image appears large and the description follows below.
-        </p>
-      </div>
-
-      <div class="scroll-row">
-        <a class="photo-card" href="#page/photography/event-photography" onclick="openDetail('photography','event-photography')">
-          <div class="photo-placeholder">Image</div>
-          <div class="photo-overlay">
-            <h3>Event Photography</h3>
-            <p>2026 · Institute events and seminars</p>
-          </div>
-        </a>
-
-        <a class="photo-card" href="#page/photography/travel-photography" onclick="openDetail('photography','travel-photography')">
-          <div class="photo-placeholder">Image</div>
-          <div class="photo-overlay">
-            <h3>Travel Photography</h3>
-            <p>2026 · Places and visual notes</p>
-          </div>
-        </a>
-
-        <a class="photo-card" href="#page/photography/portraits" onclick="openDetail('photography','portraits')">
-          <div class="photo-placeholder">Image</div>
-          <div class="photo-overlay">
-            <h3>Portraits</h3>
-            <p>2026 · Selected portrait work</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="resume">
-      <div class="section-heading">
-        <h2>Resume</h2>
-        <p>Place your CV PDF in the same repository later and link it here. This section can also summarize education, internships, leadership, and skills.</p>
-      </div>
-      <div class="button-row">
-        <a class="button" href="#">Download CV</a>
-        <a class="button secondary" href="#contact">Contact Me</a>
-      </div>
-    </section>
-
-    <section id="thoughts">
-      <div class="section-heading">
-        <h2>Thoughts</h2>
-        <p>Short reflections, informal notes, reading observations, study notes, and ideas that do not fit into full articles.</p>
-      </div>
-
-      <div class="scroll-row">
-        <a class="news-card" href="#page/thoughts/reading-note" onclick="openDetail('thoughts','reading-note')">
-          <span class="date">Note</span>
-          <div>
-            <h3>Reading Note</h3>
-            <p>A short thought or reflection can be placed here.</p>
-          </div>
-        </a>
-
-        <a class="news-card" href="#page/thoughts/reflection" onclick="openDetail('thoughts','reflection')">
-          <span class="date">Reflection</span>
-          <div>
-            <h3>Reflection</h3>
-            <p>Use this for personal or academic reflections.</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="section-heading">
-        <h2>Contact</h2>
-        <p>
-          Email: your-email@example.com<br>
-          LinkedIn: add your LinkedIn link<br>
-          Instagram: add your Instagram link
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      <p>© 2026 Prathivee. Personal portfolio website.</p>
-      <p>
-        <a href="#home">Top</a>
-        <a href="#articles">Articles</a>
-        <a href="#contact">Contact</a>
+      <p class="home-note">
+        All sections now open as separate internal pages. Each page has a collapsible sidebar so visitors can toggle through the items inside that section.
       </p>
-    </footer>
+    </section>
   </main>
 
   <main id="detailView" class="detail-layout">
     <aside id="sidebar" class="sidebar">
       <div class="sidebar-head">
-        <span class="sidebar-title" id="sidebarTitle">Items</span>
+        <span class="sidebar-title" id="sidebarTitle">Section</span>
         <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
       </div>
       <a class="sidebar-home" href="#home" onclick="showHome()">← Back to main page</a>
+      <div class="sidebar-category">Items in this section</div>
       <div class="sidebar-list" id="sidebarList"></div>
     </aside>
 
@@ -890,36 +478,192 @@
 
   <script>
     const data = {
+      about: [
+        {
+          id: "bio",
+          title: "About Me",
+          meta: "Bio",
+          desc: "Write your main professional biography here: education, interests, research direction, skills, and the type of opportunities you are looking for."
+        },
+        {
+          id: "academic-background",
+          title: "Academic Background",
+          meta: "About · Education",
+          desc: "Add your degree, institute, specialization, coursework, research training, and academic interests here."
+        },
+        {
+          id: "interests",
+          title: "Interests",
+          meta: "About · Interests",
+          desc: "Add your interests in economics, geopolitics, geoeconomics, data analysis, research, writing, and photography."
+        }
+      ],
+
       news: [
-        { id: "latest-update", title: "Latest Update", meta: "News · 2026", desc: "Add your most recent academic, professional, or creative update here. This will become the full page for that update." },
-        { id: "upcoming-work", title: "Upcoming Work", meta: "News · 2026", desc: "Add future plans, upcoming papers, events, or ongoing projects here." },
-        { id: "project-release", title: "Project Release", meta: "News · 2026", desc: "Use this for a new dashboard, data tool, article, paper release, or professional announcement." }
+        {
+          id: "latest-update",
+          title: "Latest Update",
+          meta: "News · 2026",
+          desc: "Add your most recent academic, professional, or creative update here. This will become the full page for that update."
+        },
+        {
+          id: "upcoming-work",
+          title: "Upcoming Work",
+          meta: "News · 2026",
+          desc: "Add future plans, upcoming papers, events, or ongoing projects here."
+        },
+        {
+          id: "project-release",
+          title: "Project Release",
+          meta: "News · 2026",
+          desc: "Use this for a new dashboard, data tool, article, paper release, or professional announcement."
+        }
       ],
+
       articles: [
-        { id: "india-china-relations", title: "India–China Relations", meta: "Article · Long-form essay", desc: "This page will contain the full article. Add introduction, headings, arguments, evidence, and conclusion here." },
-        { id: "geoeconomics-notes", title: "Geoeconomics Notes", meta: "Article · Notes", desc: "A full page for geoeconomics-related writing and analysis." },
-        { id: "security-sovereignty", title: "Security & Sovereignty", meta: "Article · International security", desc: "A full page for writing on security, sovereignty, R2P, conflict, and law." },
-        { id: "climate-development", title: "Climate & Development", meta: "Article · Economics and environment", desc: "A full page for climate, development, energy, and policy writing." },
-        { id: "random-essays", title: "Random Essays", meta: "Article · Miscellaneous", desc: "Use this as a collection or individual essay page." },
-        { id: "new-article-placeholder", title: "New Article Placeholder", meta: "Article · Placeholder", desc: "Duplicate this item in the code whenever you want to add a new article." }
+        {
+          id: "india-china-relations",
+          title: "India–China Relations",
+          meta: "Article · Long-form essay",
+          desc: "This page will contain the full article. Add introduction, headings, arguments, evidence, and conclusion here."
+        },
+        {
+          id: "geoeconomics-notes",
+          title: "Geoeconomics Notes",
+          meta: "Article · Notes",
+          desc: "A full page for geoeconomics-related writing and analysis."
+        },
+        {
+          id: "security-sovereignty",
+          title: "Security & Sovereignty",
+          meta: "Article · International security",
+          desc: "A full page for writing on security, sovereignty, R2P, conflict, and law."
+        },
+        {
+          id: "climate-development",
+          title: "Climate & Development",
+          meta: "Article · Economics and environment",
+          desc: "A full page for climate, development, energy, and policy writing."
+        },
+        {
+          id: "random-essays",
+          title: "Random Essays",
+          meta: "Article · Miscellaneous",
+          desc: "Use this as a collection or individual essay page."
+        }
       ],
+
       papers: [
-        { id: "research-paper-1", title: "Research Paper Title", meta: "Working Paper", desc: "Full paper page. Add abstract, research question, literature, method, findings, status, and PDF download link." },
-        { id: "dissertation-thesis", title: "Dissertation / Thesis", meta: "Thesis", desc: "Full thesis page. Add topic, supervisor, method, data, findings, and policy relevance." },
-        { id: "policy-note", title: "Policy Note", meta: "Policy Writing", desc: "Full page for a policy note or issue brief." }
+        {
+          id: "research-paper-1",
+          title: "Research Paper Title",
+          meta: "Working Paper",
+          desc: "Full paper page. Add abstract, research question, literature, method, findings, status, and PDF download link."
+        },
+        {
+          id: "dissertation-thesis",
+          title: "Dissertation / Thesis",
+          meta: "Thesis",
+          desc: "Full thesis page. Add topic, supervisor, method, data, findings, and policy relevance."
+        },
+        {
+          id: "policy-note",
+          title: "Policy Note",
+          meta: "Policy Writing",
+          desc: "Full page for a policy note or issue brief."
+        }
       ],
+
       photography: [
-        { id: "event-photography", title: "Event Photography", meta: "Photography · 2026", desc: "Large photo display first, then description below. Replace the placeholder with your actual image later.", image: true },
-        { id: "travel-photography", title: "Travel Photography", meta: "Photography · 2026", desc: "Large photo display first, then description below. Add location, date, camera notes, and context.", image: true },
-        { id: "portraits", title: "Portraits", meta: "Photography · 2026", desc: "Large photo display first, then description below. Add story, subject context, and visual notes.", image: true }
+        {
+          id: "event-photography",
+          title: "Event Photography",
+          meta: "Photography · 2026",
+          desc: "Large photo display first, then description below. Replace the placeholder with your actual image later.",
+          image: true
+        },
+        {
+          id: "travel-photography",
+          title: "Travel Photography",
+          meta: "Photography · 2026",
+          desc: "Large photo display first, then description below. Add location, date, camera notes, and context.",
+          image: true
+        },
+        {
+          id: "portraits",
+          title: "Portraits",
+          meta: "Photography · 2026",
+          desc: "Large photo display first, then description below. Add story, subject context, and visual notes.",
+          image: true
+        }
       ],
+
+      resume: [
+        {
+          id: "cv",
+          title: "CV",
+          meta: "Resume · Download",
+          desc: "Upload your CV PDF to the repository later and link it here. For example, if the file is named CV.pdf, the download link will be CV.pdf.",
+          button: true
+        },
+        {
+          id: "experience",
+          title: "Experience",
+          meta: "Resume · Experience",
+          desc: "Add internships, research roles, volunteering, communications work, leadership roles, and responsibilities here."
+        },
+        {
+          id: "skills",
+          title: "Skills",
+          meta: "Resume · Skills",
+          desc: "Add software, research tools, data skills, economics skills, writing, photography, and communication skills here."
+        }
+      ],
+
       thoughts: [
-        { id: "reading-note", title: "Reading Note", meta: "Thought", desc: "A full page for a short reading note or observation." },
-        { id: "reflection", title: "Reflection", meta: "Thought", desc: "A full page for informal reflection or personal writing." }
+        {
+          id: "reading-note",
+          title: "Reading Note",
+          meta: "Thought",
+          desc: "A full page for a short reading note or observation."
+        },
+        {
+          id: "reflection",
+          title: "Reflection",
+          meta: "Thought",
+          desc: "A full page for informal reflection or personal writing."
+        }
+      ],
+
+      contact: [
+        {
+          id: "links",
+          title: "Contact Links",
+          meta: "Contact",
+          desc: "Add your email, LinkedIn, Instagram, GitHub, and other public links here."
+        },
+        {
+          id: "collaboration",
+          title: "Collaboration",
+          meta: "Contact · Outreach",
+          desc: "Write what kinds of collaboration, research, writing, internship, or project opportunities you are open to."
+        }
       ]
     };
 
+    const sectionIntro = {
+      about: "This section introduces who you are. Use the sidebar to move between your bio, academic background, and interests.",
+      news: "This section contains updates and announcements. Use the sidebar to browse each update.",
+      articles: "This section contains long-form articles. Use the sidebar to move between different article pages.",
+      papers: "This section contains research papers, working papers, and academic writing. Use the sidebar to open each paper page.",
+      photography: "This section contains photo stories. Each item can show a large image first, followed by the description.",
+      resume: "This section contains your CV, experience, and skills. Use the sidebar to move between resume items.",
+      thoughts: "This section contains notes and reflections. Use the sidebar to browse them.",
+      contact: "This section contains contact links and collaboration information."
+    };
+
     function titleCase(category) {
+      if (category === "about") return "About Me";
       return category.charAt(0).toUpperCase() + category.slice(1);
     }
 
@@ -927,7 +671,13 @@
       return (data[category] || []).find(item => item.id === id) || (data[category] || [])[0];
     }
 
-    function openDetail(category, id) {
+    function openCategory(category) {
+      const firstItem = (data[category] || [])[0];
+      if (!firstItem) return;
+      openDetail(category, firstItem.id, true);
+    }
+
+    function openDetail(category, id, pushHash = false) {
       const item = findItem(category, id);
       if (!item) return;
 
@@ -935,6 +685,7 @@
       document.getElementById("detailView").classList.add("active");
 
       document.getElementById("sidebarTitle").textContent = titleCase(category);
+
       const sidebarList = document.getElementById("sidebarList");
       sidebarList.innerHTML = "";
 
@@ -943,14 +694,23 @@
         link.href = "#page/" + category + "/" + entry.id;
         link.textContent = entry.title;
         link.className = entry.id === id ? "active" : "";
-        link.onclick = function() {
-          openDetail(category, entry.id);
+        link.onclick = function(event) {
+          event.preventDefault();
+          openDetail(category, entry.id, true);
         };
         sidebarList.appendChild(link);
       });
 
       const content = document.getElementById("detailContent");
       const imageBlock = item.image ? '<div class="image-large">Large Image</div>' : "";
+      const buttonBlock = item.button ? '<div class="button-row"><a class="button" href="CV.pdf">Download CV</a><a class="button secondary" onclick="openDetail(\\'resume\\',\\'experience\\',true)">View Experience</a></div>' : "";
+
+      const itemCards = data[category].map(entry => `
+        <div class="detail-card" onclick="openDetail('${category}', '${entry.id}', true)">
+          <h3>${entry.title}</h3>
+          <p>${entry.meta}</p>
+        </div>
+      `).join("");
 
       content.innerHTML = `
         <a class="back-link" href="#home" onclick="showHome()">← Back to main page</a>
@@ -958,9 +718,14 @@
         <h1>${item.title}</h1>
         ${imageBlock}
         <p>${item.desc}</p>
-        <p>This is a placeholder full page. Replace this text with your final content later. The sidebar lets visitors toggle between other items in the same section without returning to the homepage.</p>
-        <p>You can add more paragraphs, images, download links, citations, or embedded project links here.</p>
+        <p>${sectionIntro[category]}</p>
+        ${buttonBlock}
+        <div class="detail-grid">${itemCards}</div>
       `;
+
+      if (pushHash) {
+        history.pushState(null, "", "#page/" + category + "/" + item.id);
+      }
 
       window.scrollTo(0, 0);
     }
@@ -968,12 +733,8 @@
     function showHome() {
       document.getElementById("detailView").classList.remove("active");
       document.getElementById("homeView").style.display = "block";
-      setTimeout(() => {
-        const hash = window.location.hash.replace("#", "");
-        if (hash && document.getElementById(hash)) {
-          document.getElementById(hash).scrollIntoView();
-        }
-      }, 20);
+      history.pushState(null, "", "#home");
+      window.scrollTo(0, 0);
     }
 
     function toggleSidebar() {
@@ -984,7 +745,26 @@
       const hash = window.location.hash;
       if (hash.startsWith("#page/")) {
         const parts = hash.replace("#page/", "").split("/");
-        openDetail(parts[0], parts[1]);
+        if (parts.length === 1 || !parts[1]) {
+          openCategory(parts[0]);
+        } else {
+          openDetail(parts[0], parts[1], false);
+        }
+      }
+    });
+
+    window.addEventListener("popstate", () => {
+      const hash = window.location.hash;
+      if (hash.startsWith("#page/")) {
+        const parts = hash.replace("#page/", "").split("/");
+        if (parts.length === 1 || !parts[1]) {
+          openCategory(parts[0]);
+        } else {
+          openDetail(parts[0], parts[1], false);
+        }
+      } else {
+        document.getElementById("detailView").classList.remove("active");
+        document.getElementById("homeView").style.display = "block";
       }
     });
   </script>
