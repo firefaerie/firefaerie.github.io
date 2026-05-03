@@ -1,76 +1,322 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | Prathivee</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #eef0f3;
+      color: #050505;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+    }
+
+    .screen {
+      min-height: 100vh;
+      padding: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .white-card {
+      width: min(92vw, 1180px);
+      min-height: 82vh;
+      background: #fff;
+      border: 3px solid #dedfe4;
+      border-radius: 34px;
+      padding: clamp(36px, 6vw, 72px);
+      overflow: hidden;
+    }
+
+    .intro-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .title {
+      font-size: clamp(56px, 8vw, 105px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      font-weight: 900;
+      max-width: 900px;
+    }
+
+    .title span {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 5px solid #050505;
+      animation: typing 2.1s steps(22, end) forwards, blink 0.75s step-end infinite;
+      max-width: 0;
+    }
+
+    .subtitle {
+      margin-top: 28px;
+      font-size: clamp(20px, 2.2vw, 34px);
+      line-height: 1.18;
+      font-weight: 700;
+      letter-spacing: -1px;
+      max-width: 760px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: riseText 0.9s ease forwards;
+      animation-delay: 2.2s;
+    }
+
+    @keyframes typing {
+      to {
+        max-width: 900px;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    @keyframes riseText {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .menu-card {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr 1.45fr;
+      gap: clamp(14px, 1.4vw, 22px);
+    }
+
+    .tile {
+      background: #174914;
+      color: white;
+      border-radius: 10px;
+      padding: clamp(16px, 2vw, 24px);
+      text-decoration: none;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      min-height: 150px;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tile.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .tile:hover {
+      background: #10370f;
+      transform: translateY(-8px) scale(1.015);
+      box-shadow: 0 22px 40px rgba(0,0,0,0.16);
+    }
+
+    .tile strong {
+      font-size: clamp(18px, 1.55vw, 28px);
+      font-weight: 900;
+      letter-spacing: -0.8px;
+    }
+
+    .plus {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      background: white;
+      color: #174914;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      width: 42px;
+      height: 42px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .tile:hover .arrow {
+      background: white;
+      color: #174914;
+    }
+
+    .about { grid-column: 1; grid-row: 1; }
+    .news { grid-column: 2; grid-row: 1; }
+    .resume { grid-column: 3; grid-row: 1; }
+    .thoughts { grid-column: 4; grid-row: 1 / span 2; }
+    .articles { grid-column: 1; grid-row: 2; }
+    .papers { grid-column: 2; grid-row: 2; }
+    .photography { grid-column: 3; grid-row: 2; }
+
+    @media (max-width: 850px) {
+      .screen {
+        padding: 18px;
+      }
+
+      .white-card {
+        min-height: 86vh;
+        border-radius: 26px;
+        padding: 34px;
+      }
+
+      .title {
+        font-size: clamp(52px, 14vw, 82px);
+        letter-spacing: -3px;
+      }
+
+      .title span {
+        white-space: normal;
+        border-right: none;
+        max-width: none;
+        animation: none;
+      }
+
+      .subtitle {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .menu-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+
+      .about,
+      .news,
+      .resume,
+      .thoughts,
+      .articles,
+      .papers,
+      .photography {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .tile {
+        min-height: 150px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <main class="home-page">
-    <section class="landing-panel">
-      <div class="intro-card">
-        <h1 class="typewriter-title">
-          <span>Hi,</span><br>
-          <span>I’m Prathivee.</span>
+  <main class="page">
+
+    <section class="screen">
+      <div class="white-card intro-card">
+        <h1 class="title">
+          <span>Hi,<br>I’m Prathivee.</span>
         </h1>
 
-        <p class="intro-subtitle">
+        <p class="subtitle">
           I study economies, question systems,<br>
           and write about the forces shaping the world.
         </p>
       </div>
     </section>
 
-    <section class="menu-panel" id="explore">
-      <div class="menu-card-grid">
-        <a class="menu-tile tile-about reveal-card" href="about.html">
+    <section class="screen">
+      <div class="white-card menu-card">
+        <a class="tile about" href="about.html">
           <span class="plus">+</span>
           <strong>About Me</strong>
           <span class="arrow">→</span>
         </a>
 
-        <a class="menu-tile tile-news reveal-card" href="news.html">
+        <a class="tile news" href="news.html">
           <span class="plus">+</span>
           <strong>News</strong>
           <span class="arrow">→</span>
         </a>
 
-        <a class="menu-tile tile-resume reveal-card" href="resume.html">
+        <a class="tile resume" href="resume.html">
           <span class="plus">+</span>
           <strong>Resume</strong>
           <span class="arrow">→</span>
         </a>
 
-        <a class="menu-tile tile-thoughts reveal-card" href="thoughts.html">
+        <a class="tile thoughts" href="thoughts.html">
           <span class="plus">+</span>
           <strong>Thoughts</strong>
           <span class="arrow">→</span>
         </a>
 
-        <a class="menu-tile tile-articles reveal-card" href="articles.html">
+        <a class="tile articles" href="articles.html">
           <span class="plus">+</span>
           <strong>Articles</strong>
           <span class="arrow">→</span>
         </a>
 
-        <a class="menu-tile tile-papers reveal-card" href="papers.html">
+        <a class="tile papers" href="papers.html">
           <span class="plus">+</span>
           <strong>Papers</strong>
           <span class="arrow">→</span>
         </a>
 
-        <a class="menu-tile tile-photo reveal-card" href="photography.html">
+        <a class="tile photography" href="photography.html">
           <span class="plus">+</span>
           <strong>Photography</strong>
           <span class="arrow">→</span>
         </a>
       </div>
     </section>
+
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    const tiles = document.querySelectorAll(".tile");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, index * 100);
+        }
+      });
+    }, {
+      threshold: 0.25
+    });
+
+    tiles.forEach(tile => observer.observe(tile));
+  </script>
 </body>
 </html>
