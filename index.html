@@ -6,15 +6,9 @@
   <title>Portfolio | Prathivee</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       background: #eef0f3;
@@ -24,28 +18,23 @@
     }
 
     .page {
-      width: 100%;
-    }
-
-    .screen {
       min-height: 100vh;
       padding: 42px;
       display: flex;
-      align-items: center;
       justify-content: center;
     }
 
-    .white-card {
+    .main-card {
       width: min(92vw, 1180px);
-      min-height: 82vh;
       background: #fff;
       border: 3px solid #dedfe4;
       border-radius: 34px;
       padding: clamp(36px, 6vw, 72px);
-      overflow: hidden;
+      min-height: 170vh;
     }
 
-    .intro-card {
+    .intro-section {
+      min-height: 78vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -81,17 +70,8 @@
       animation-delay: 2.2s;
     }
 
-    @keyframes typing {
-      to {
-        max-width: 900px;
-      }
-    }
-
-    @keyframes blink {
-      50% {
-        border-color: transparent;
-      }
-    }
+    @keyframes typing { to { max-width: 900px; } }
+    @keyframes blink { 50% { border-color: transparent; } }
 
     @keyframes riseText {
       to {
@@ -100,11 +80,17 @@
       }
     }
 
+    .menu-section {
+      padding-top: 40px;
+      padding-bottom: 30px;
+    }
+
     .menu-card {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: 1fr 1.45fr;
       gap: clamp(14px, 1.4vw, 22px);
+      min-height: 70vh;
     }
 
     .tile {
@@ -186,14 +172,17 @@
     .photography { grid-column: 3; grid-row: 2; }
 
     @media (max-width: 850px) {
-      .screen {
-        padding: 18px;
-      }
+      .page { padding: 18px; }
 
-      .white-card {
-        min-height: 86vh;
+      .main-card {
+        width: 100%;
+        min-height: auto;
         border-radius: 26px;
         padding: 34px;
+      }
+
+      .intro-section {
+        min-height: 82vh;
       }
 
       .title {
@@ -217,31 +206,24 @@
       .menu-card {
         grid-template-columns: 1fr;
         grid-template-rows: none;
+        min-height: auto;
       }
 
-      .about,
-      .news,
-      .resume,
-      .thoughts,
-      .articles,
-      .papers,
-      .photography {
+      .about, .news, .resume, .thoughts, .articles, .papers, .photography {
         grid-column: auto;
         grid-row: auto;
       }
 
-      .tile {
-        min-height: 150px;
-      }
+      .tile { min-height: 150px; }
     }
   </style>
 </head>
 
 <body>
   <main class="page">
+    <div class="main-card">
 
-    <section class="screen">
-      <div class="white-card intro-card">
+      <section class="intro-section">
         <h1 class="title">
           <span>Hi,<br>I’m Prathivee.</span>
         </h1>
@@ -250,55 +232,55 @@
           I study economies, question systems,<br>
           and write about the forces shaping the world.
         </p>
-      </div>
-    </section>
+      </section>
 
-    <section class="screen">
-      <div class="white-card menu-card">
-        <a class="tile about" href="about.html">
-          <span class="plus">+</span>
-          <strong>About Me</strong>
-          <span class="arrow">→</span>
-        </a>
+      <section class="menu-section">
+        <div class="menu-card">
+          <a class="tile about" href="about.html">
+            <span class="plus">+</span>
+            <strong>About Me</strong>
+            <span class="arrow">→</span>
+          </a>
 
-        <a class="tile news" href="news.html">
-          <span class="plus">+</span>
-          <strong>News</strong>
-          <span class="arrow">→</span>
-        </a>
+          <a class="tile news" href="news.html">
+            <span class="plus">+</span>
+            <strong>News</strong>
+            <span class="arrow">→</span>
+          </a>
 
-        <a class="tile resume" href="resume.html">
-          <span class="plus">+</span>
-          <strong>Resume</strong>
-          <span class="arrow">→</span>
-        </a>
+          <a class="tile resume" href="resume.html">
+            <span class="plus">+</span>
+            <strong>Resume</strong>
+            <span class="arrow">→</span>
+          </a>
 
-        <a class="tile thoughts" href="thoughts.html">
-          <span class="plus">+</span>
-          <strong>Thoughts</strong>
-          <span class="arrow">→</span>
-        </a>
+          <a class="tile thoughts" href="thoughts.html">
+            <span class="plus">+</span>
+            <strong>Thoughts</strong>
+            <span class="arrow">→</span>
+          </a>
 
-        <a class="tile articles" href="articles.html">
-          <span class="plus">+</span>
-          <strong>Articles</strong>
-          <span class="arrow">→</span>
-        </a>
+          <a class="tile articles" href="articles.html">
+            <span class="plus">+</span>
+            <strong>Articles</strong>
+            <span class="arrow">→</span>
+          </a>
 
-        <a class="tile papers" href="papers.html">
-          <span class="plus">+</span>
-          <strong>Papers</strong>
-          <span class="arrow">→</span>
-        </a>
+          <a class="tile papers" href="papers.html">
+            <span class="plus">+</span>
+            <strong>Papers</strong>
+            <span class="arrow">→</span>
+          </a>
 
-        <a class="tile photography" href="photography.html">
-          <span class="plus">+</span>
-          <strong>Photography</strong>
-          <span class="arrow">→</span>
-        </a>
-      </div>
-    </section>
+          <a class="tile photography" href="photography.html">
+            <span class="plus">+</span>
+            <strong>Photography</strong>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </section>
 
+    </div>
   </main>
 
   <script>
@@ -312,9 +294,7 @@
           }, index * 100);
         }
       });
-    }, {
-      threshold: 0.25
-    });
+    }, { threshold: 0.25 });
 
     tiles.forEach(tile => observer.observe(tile));
   </script>
