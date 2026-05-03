@@ -346,8 +346,8 @@ def page(title, body, active=None, sidebar_items=None):
 index_body = """<main>
   <section class="hero">
     <div class="label">Personal Portfolio</div>
-    <h1>Welcome,<br>I’m Prathivee.</h1>
-    <p class="hero-text">A central space for my research, articles, academic work, projects, photography, CV, and professional updates.</p>
+    <h1>Hi,<br>I’m Prathivee.</h1>
+    <p class="hero-text">I study economies, question systems, and write about the forces shaping the world.</p>
     <div class="quick-links">
       <a class="quick-card" href="about.html"><strong>About Me</strong><span>Bio & interests</span></a>
       <a class="quick-card" href="news.html"><strong>News</strong><span>Updates & announcements</span></a>
