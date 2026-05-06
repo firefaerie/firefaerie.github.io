@@ -3,300 +3,781 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Prathivee</title>
+  <title>Prathivee — Economist, Writer, Researcher</title>
+  <meta name="description" content="Prathivee studies economies, questions systems, and writes about the forces shaping the world." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ── RESET & BASE ───────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --bg:           #0c0f0c;
+      --surface:      #131813;
+      --surface-2:    #1a211a;
+      --green-muted:  #4a7c59;
+      --green-bright: #7dbf8e;
+      --green-dim:    #2a4a34;
+      --text-primary: #e8e8e2;
+      --text-secondary: #8a9180;
+      --text-tertiary:  #4f5a4f;
+      --border:       rgba(74,124,89,0.18);
+      --ease:         cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
 
     body {
-      background: #eef0f3;
-      color: #050505;
-      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .page {
-      min-height: 100vh;
-      padding: 42px;
+    /* ── NOISE TEXTURE OVERLAY ──────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ── FLOATING TEXT FRAGMENTS (background atmosphere) ────────── */
+    .fragments {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .fragment {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(10px, 1.1vw, 13px);
+      color: var(--text-primary);
+      opacity: 0.045;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 24px 48px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(12,15,12,0.95) 0%, transparent 100%);
+    }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      text-decoration: none;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease) 0.3s forwards;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease) 0.5s forwards;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--green-bright); }
+
+    /* ── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 48px 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+      gap: 48px;
     }
 
-    .main-card {
-      width: min(92vw, 1180px);
-      background: #fff;
-      border: 3px solid #dedfe4;
-      border-radius: 34px;
-      padding: clamp(36px, 6vw, 72px);
-      min-height: 170vh;
+    .hero-left {
+      position: relative;
+      z-index: 2;
     }
 
-    .intro-section {
-      min-height: 78vh;
+    .hero-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-muted);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.6s var(--ease) 0.8s forwards;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(64px, 7.5vw, 112px);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease) 1s forwards;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--green-bright);
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--green-muted);
+      margin: 36px 0;
+      opacity: 0;
+      animation: expandLine 0.8s var(--ease) 1.6s forwards;
+    }
+
+    .hero-tagline {
+      font-size: clamp(15px, 1.4vw, 18px);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 420px;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease) 1.9s forwards;
+    }
+
+    .hero-scroll-cue {
+      margin-top: 64px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease) 2.4s forwards;
+    }
+    .hero-scroll-cue span {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--text-tertiary);
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--green-bright);
+      animation: scanLine 2.5s ease-in-out 3s infinite;
+    }
+
+    /* ── HERO RIGHT — PHOTO COMPOSITION ────────────────────────── */
+    .hero-right {
+      position: relative;
+      height: 580px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.2s forwards;
+    }
+
+    /* Primary photo — large, vertically masked */
+    .photo-primary {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 72%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 4px 4px 120px 4px;
+    }
+    .photo-primary img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(15%) contrast(1.05);
+      display: block;
+    }
+    /* Green tint overlay */
+    .photo-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(74,124,89,0.22) 0%,
+        transparent 50%,
+        rgba(12,15,12,0.55) 100%
+      );
+      mix-blend-mode: multiply;
+    }
+
+    /* Decorative frame behind photo */
+    .photo-frame {
+      position: absolute;
+      right: -16px;
+      top: 24px;
+      width: 72%;
+      height: 100%;
+      border: 1px solid var(--green-dim);
+      border-radius: 4px 4px 120px 4px;
+      pointer-events: none;
+    }
+
+    /* Floating accent card */
+    .photo-accent {
+      position: absolute;
+      left: 0;
+      bottom: 48px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      width: 52%;
+      backdrop-filter: blur(8px);
+      z-index: 3;
+    }
+    .accent-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .accent-meta {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-muted);
+    }
+
+    /* ── SECTION DIVIDER ────────────────────────────────────────── */
+    .section-divider {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .divider-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── GRID SECTION ───────────────────────────────────────────── */
+    .grid-section {
+      padding: 0 48px 120px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+    }
+
+    /* Grid placement — editorial asymmetry */
+    .tile-about      { grid-column: 1 / 5;  grid-row: 1; }
+    .tile-articles   { grid-column: 5 / 9;  grid-row: 1; }
+    .tile-papers     { grid-column: 9 / 13; grid-row: 1; }
+    .tile-thoughts   { grid-column: 1 / 6;  grid-row: 2; }
+    .tile-photography{ grid-column: 6 / 10; grid-row: 2; }
+    .tile-news       { grid-column: 10 / 13;grid-row: 2; }
+    .tile-resume     { grid-column: 1 / 13; grid-row: 3; }
+
+    /* ── TILE BASE ──────────────────────────────────────────────── */
+    .tile {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 28px 24px;
+      text-decoration: none;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-    }
-
-    .title {
-      font-size: clamp(56px, 8vw, 105px);
-      line-height: 0.95;
-      letter-spacing: -5px;
-      font-weight: 900;
-      max-width: 900px;
-    }
-
-    .title span {
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 5px solid #050505;
-      animation: typing 2.1s steps(22, end) forwards, blink 0.75s step-end infinite;
-      max-width: 0;
-    }
-
-    .subtitle {
-      margin-top: 28px;
-      font-size: clamp(20px, 2.2vw, 34px);
-      line-height: 1.18;
-      font-weight: 700;
-      letter-spacing: -1px;
-      max-width: 760px;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: riseText 0.9s ease forwards;
-      animation-delay: 2.2s;
-    }
-
-    @keyframes typing { to { max-width: 900px; } }
-    @keyframes blink { 50% { border-color: transparent; } }
-
-    @keyframes riseText {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .menu-section {
-      padding-top: 40px;
-      padding-bottom: 30px;
-    }
-
-    .menu-card {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 1fr 1.45fr;
-      gap: clamp(14px, 1.4vw, 22px);
-      min-height: 70vh;
-    }
-
-    .tile {
-      background: #174914;
-      color: white;
-      border-radius: 10px;
-      padding: clamp(16px, 2vw, 24px);
-      text-decoration: none;
+      justify-content: space-between;
+      min-height: 200px;
       position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      min-height: 150px;
+      overflow: hidden;
       opacity: 0;
-      transform: translateY(60px);
-      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      transform: translateY(32px);
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
     }
 
+    /* Stagger reveal via JS class */
     .tile.visible {
       opacity: 1;
       transform: translateY(0);
-      transition: opacity 0.75s ease, transform 0.75s ease;
+      transition:
+        opacity 0.7s var(--ease),
+        transform 0.7s var(--ease),
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
     }
 
     .tile:hover {
-      background: #10370f;
-      transform: translateY(-8px) scale(1.015);
-      box-shadow: 0 22px 40px rgba(0,0,0,0.16);
+      background: var(--surface-2);
+      border-color: var(--green-dim);
+      box-shadow: 0 0 48px rgba(74,124,89,0.1), 0 24px 40px rgba(0,0,0,0.25);
+      transform: translateY(-4px);
     }
 
-    .tile strong {
-      font-size: clamp(18px, 1.55vw, 28px);
-      font-weight: 900;
-      letter-spacing: -0.8px;
-    }
-
-    .plus {
+    /* Ambient glow on hover */
+    .tile::before {
+      content: '';
       position: absolute;
-      top: 12px;
-      right: 14px;
-      width: 21px;
-      height: 21px;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 80%, rgba(74,124,89,0.08) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .tile:hover::before { opacity: 1; }
+
+    .tile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .tile-index {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--text-tertiary);
+    }
+
+    .tile-arrow {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--text-tertiary);
       border-radius: 50%;
-      background: white;
-      color: #174914;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
-      font-size: 18px;
+      font-size: 14px;
+      color: var(--text-tertiary);
+      transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+      flex-shrink: 0;
+    }
+    .tile:hover .tile-arrow {
+      border-color: var(--green-bright);
+      color: var(--green-bright);
     }
 
-    .arrow {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      width: 42px;
-      height: 42px;
-      border: 2px solid white;
-      border-radius: 50%;
+    .tile-bottom { margin-top: auto; }
+
+    .tile-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2.2vw, 32px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .tile-teaser {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+      max-width: 340px;
+    }
+    .tile:hover .tile-teaser { opacity: 1; }
+
+    /* ── RESUME TILE — WIDE, HORIZONTAL ─────────────────────────── */
+    .tile-resume {
+      min-height: 100px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .tile-resume .tile-bottom {
+      margin-top: 0;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      line-height: 1;
+      gap: 32px;
+    }
+    .tile-resume .tile-title { margin-bottom: 0; }
+    .resume-meta {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-muted);
     }
 
-    .tile:hover .arrow {
-      background: white;
-      color: #174914;
+    /* ── PHOTOGRAPHY TILE — SUBTLE BG ───────────────────────────── */
+    .tile-photography {
+      background: var(--surface);
+      position: relative;
+    }
+    .tile-photography .photo-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a2e1e 0%, #0c0f0c 100%);
+      border-radius: inherit;
+      z-index: 0;
+    }
+    .tile-photography > * { position: relative; z-index: 1; }
+
+    /* ── ANIMATIONS ─────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes expandLine {
+      from { opacity: 0; width: 0; }
+      to   { opacity: 1; width: 48px; }
+    }
+    @keyframes scanLine {
+      0%   { left: -100%; }
+      50%  { left: 100%; }
+      100% { left: 100%; }
     }
 
-    .about { grid-column: 1; grid-row: 1; }
-    .news { grid-column: 2; grid-row: 1; }
-    .resume { grid-column: 3; grid-row: 1; }
-    .thoughts { grid-column: 4; grid-row: 1 / span 2; }
-    .articles { grid-column: 1; grid-row: 2; }
-    .papers { grid-column: 2; grid-row: 2; }
-    .photography { grid-column: 3; grid-row: 2; }
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .footer-links a:hover { color: var(--green-bright); }
 
-    @media (max-width: 850px) {
-      .page { padding: 18px; }
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
 
-      .main-card {
-        width: 100%;
-        min-height: auto;
-        border-radius: 26px;
-        padding: 34px;
-      }
-
-      .intro-section {
-        min-height: 82vh;
-      }
-
-      .title {
-        font-size: clamp(52px, 14vw, 82px);
-        letter-spacing: -3px;
-      }
-
-      .title span {
-        white-space: normal;
-        border-right: none;
-        max-width: none;
-        animation: none;
-      }
-
-      .subtitle {
-        opacity: 1;
-        transform: none;
-        animation: none;
-      }
-
-      .menu-card {
+      .hero {
         grid-template-columns: 1fr;
-        grid-template-rows: none;
+        padding: 100px 24px 64px;
         min-height: auto;
+        gap: 56px;
       }
+      .hero-right {
+        height: 420px;
+        order: -1;
+      }
+      .photo-accent { display: none; }
 
-      .about, .news, .resume, .thoughts, .articles, .papers, .photography {
+      .grid-section { padding: 0 24px 80px; }
+      .section-divider { padding: 0 24px; }
+
+      .tile-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .tile-about, .tile-articles, .tile-papers,
+      .tile-thoughts, .tile-photography, .tile-news,
+      .tile-resume {
         grid-column: auto;
         grid-row: auto;
       }
+      .tile-resume {
+        grid-column: 1 / -1;
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-      .tile { min-height: 150px; }
+      footer {
+        padding: 24px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .tile-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
-    <div class="main-card">
 
-      <section class="intro-section">
-        <h1 class="title">
-          <span>Hi,<br>I’m Prathivee.</span>
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-name" href="/">Prathivee</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="articles.html">Writing</a></li>
+      <li><a href="papers.html">Research</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section style="position:relative; overflow:hidden;">
+
+    <!-- Atmospheric text fragments -->
+    <div class="fragments" aria-hidden="true">
+      <span class="fragment" style="top:12%; left:6%;">
+        "The economy is not a machine. It is a conversation."
+      </span>
+      <span class="fragment" style="top:28%; left:62%;">
+        systems of power · global supply chains · sovereignty
+      </span>
+      <span class="fragment" style="top:58%; left:8%;">
+        development without dependency — a provocation
+      </span>
+      <span class="fragment" style="top:72%; left:55%;">
+        "What is infrastructure, if not a claim about the future?"
+      </span>
+      <span class="fragment" style="top:88%; left:22%;">
+        geoeconomics · climate finance · political economy
+      </span>
+    </div>
+
+    <div class="hero">
+
+      <!-- LEFT COLUMN -->
+      <div class="hero-left">
+        <p class="hero-label">Portfolio — Prathivee</p>
+
+        <h1 class="hero-name">
+          Hi,<br>I'm <em>Prathivee.</em>
         </h1>
 
-        <p class="subtitle">
+        <div class="hero-divider"></div>
+
+        <p class="hero-tagline">
           I study economies, question systems,<br>
           and write about the forces shaping the world.
         </p>
-      </section>
 
-      <section class="menu-section">
-        <div class="menu-card">
-          <a class="tile about" href="about.html">
-            <span class="plus">+</span>
-            <strong>About Me</strong>
-            <span class="arrow">→</span>
-          </a>
-
-          <a class="tile news" href="news.html">
-            <span class="plus">+</span>
-            <strong>News</strong>
-            <span class="arrow">→</span>
-          </a>
-
-          <a class="tile resume" href="resume.html">
-            <span class="plus">+</span>
-            <strong>Resume</strong>
-            <span class="arrow">→</span>
-          </a>
-
-          <a class="tile thoughts" href="thoughts.html">
-            <span class="plus">+</span>
-            <strong>Thoughts</strong>
-            <span class="arrow">→</span>
-          </a>
-
-          <a class="tile articles" href="articles.html">
-            <span class="plus">+</span>
-            <strong>Articles</strong>
-            <span class="arrow">→</span>
-          </a>
-
-          <a class="tile papers" href="papers.html">
-            <span class="plus">+</span>
-            <strong>Papers</strong>
-            <span class="arrow">→</span>
-          </a>
-
-          <a class="tile photography" href="photography.html">
-            <span class="plus">+</span>
-            <strong>Photography</strong>
-            <span class="arrow">→</span>
-          </a>
+        <div class="hero-scroll-cue">
+          <div class="scroll-line"></div>
+          <span>Scroll to explore</span>
         </div>
-      </section>
+      </div>
+
+      <!-- RIGHT COLUMN — photo composition -->
+      <div class="hero-right">
+        <div class="photo-frame"></div>
+        <div class="photo-primary">
+          <!--
+            IMPORTANT: Save your photo as  images/prathivee-1.jpg
+            in your GitHub repo before deploying.
+            Create the folder: /images/
+          -->
+          <img
+            src="images/prathivee-1.jpg"
+            alt="Prathivee"
+            loading="eager"
+          />
+        </div>
+        <div class="photo-accent">
+          <p class="accent-quote">
+            "Studying how economies decide who gets to build the future."
+          </p>
+          <span class="accent-meta">Economist · Writer · Researcher</span>
+        </div>
+      </div>
 
     </div>
-  </main>
+  </section>
 
+  <!-- ── GRID SECTION ── -->
+  <div class="section-divider">
+    <span class="divider-label">Explore</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <section class="grid-section">
+    <div class="tile-grid">
+
+      <a class="tile tile-about" href="about.html">
+        <div class="tile-top">
+          <span class="tile-index">01</span>
+          <span class="tile-arrow">↗</span>
+        </div>
+        <div class="tile-bottom">
+          <h2 class="tile-title">About Me</h2>
+          <p class="tile-teaser">On what I study, where I've been, and why I ask the questions I do.</p>
+        </div>
+      </a>
+
+      <a class="tile tile-articles" href="articles.html">
+        <div class="tile-top">
+          <span class="tile-index">02</span>
+          <span class="tile-arrow">↗</span>
+        </div>
+        <div class="tile-bottom">
+          <h2 class="tile-title">Articles</h2>
+          <p class="tile-teaser">Essays on political economy, development, and the systems quietly running everything.</p>
+        </div>
+      </a>
+
+      <a class="tile tile-papers" href="papers.html">
+        <div class="tile-top">
+          <span class="tile-index">03</span>
+          <span class="tile-arrow">↗</span>
+        </div>
+        <div class="tile-bottom">
+          <h2 class="tile-title">Papers</h2>
+          <p class="tile-teaser">Research at the intersection of geoeconomics, sovereignty, and climate finance.</p>
+        </div>
+      </a>
+
+      <a class="tile tile-thoughts" href="thoughts.html">
+        <div class="tile-top">
+          <span class="tile-index">04</span>
+          <span class="tile-arrow">↗</span>
+        </div>
+        <div class="tile-bottom">
+          <h2 class="tile-title">Thoughts</h2>
+          <p class="tile-teaser">Fragments. Reading notes. Things that don't fit neatly anywhere else.</p>
+        </div>
+      </a>
+
+      <a class="tile tile-photography" href="photography.html">
+        <div class="photo-bg"></div>
+        <div class="tile-top">
+          <span class="tile-index">05</span>
+          <span class="tile-arrow">↗</span>
+        </div>
+        <div class="tile-bottom">
+          <h2 class="tile-title">Photography</h2>
+          <p class="tile-teaser">Seeing slowly. Places, people, and light caught between thinking.</p>
+        </div>
+      </a>
+
+      <a class="tile tile-news" href="news.html">
+        <div class="tile-top">
+          <span class="tile-index">06</span>
+          <span class="tile-arrow">↗</span>
+        </div>
+        <div class="tile-bottom">
+          <h2 class="tile-title">News</h2>
+          <p class="tile-teaser">Updates on current projects, upcoming work, and where I'll be next.</p>
+        </div>
+      </a>
+
+      <a class="tile tile-resume" href="resume.html">
+        <div class="tile-top" style="flex-shrink:0;">
+          <span class="tile-index">07</span>
+        </div>
+        <div class="tile-bottom">
+          <h2 class="tile-title">Résumé</h2>
+          <p class="tile-teaser resume-meta">View full CV →</p>
+        </div>
+        <span class="tile-arrow" style="flex-shrink:0; align-self:center;">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-name">Prathivee &mdash; 2025</span>
+    <ul class="footer-links">
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="resume.html">CV</a></li>
+    </ul>
+  </footer>
+
+  <!-- ── SCRIPT ── -->
   <script>
-    const tiles = document.querySelectorAll(".tile");
-
+    // Tile reveal on scroll
+    const tiles = document.querySelectorAll('.tile');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
+      entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add("visible");
-          }, index * 100);
+          const delay = parseInt(entry.target.dataset.delay || 0);
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.12 });
 
-    tiles.forEach(tile => observer.observe(tile));
+    tiles.forEach((tile, i) => {
+      tile.dataset.delay = i * 80;
+      observer.observe(tile);
+    });
+
+    // Subtle parallax on photo
+    const photoPrimary = document.querySelector('.photo-primary img');
+    if (photoPrimary) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        if (scrolled < window.innerHeight) {
+          photoPrimary.style.transform = `translateY(${scrolled * 0.08}px)`;
+        }
+      }, { passive: true });
+    }
   </script>
+
 </body>
 </html>
